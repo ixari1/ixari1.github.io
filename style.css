@@ -1,0 +1,287 @@
+/* ========================================================================
+   1. CSS Reset & Box-Sizing
+   ======================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================================================
+   2. Global Variables and Base Styles
+   ======================================================================== */
+:root {
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --base-font-size: 16px;
+  --line-height: 1.6;
+  --primary-color: #333;
+  --secondary-color: #f4f4f4;
+  --accent-color: #008CBA;
+  --header-bg: #ffffff;
+  --footer-bg: #ffffff;
+  --link-color: #008CBA;
+  --link-hover-color: #005f8a;
+  --transition-speed: 0.3s;
+  --border-radius: 8px;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+html {
+  font-size: var(--base-font-size);
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 20px;
+}
+
+/* ========================================================================
+   3. Typography and Utility Classes
+   ======================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease-in-out;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ========================================================================
+   4. Header Styles
+   ======================================================================== */
+.site-header {
+  background-color: var(--header-bg);
+  padding: 20px 0;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  margin-bottom: 20px;
+}
+
+.site-header h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+/* ========================================================================
+   5. Gallery Layout and Styling
+   ======================================================================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 15px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius);
+  transition: transform var(--transition-speed) ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ========================================================================
+   6. Footer Styles
+   ======================================================================== */
+.site-footer {
+  background-color: var(--footer-bg);
+  padding: 15px 0;
+  box-shadow: 0 -2px 4px var(--shadow-color);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ========================================================================
+   7. Animations and Transitions
+   ======================================================================== */
+/* Fade-in animation for gallery items */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery-item {
+  animation: fadeIn 0.5s ease-in-out both;
+}
+
+/* ========================================================================
+   8. Media Queries for Responsive Design
+   ======================================================================== */
+@media (max-width: 1024px) {
+  .gallery {
+    grid-gap: 12px;
+  }
+  .site-header h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+  }
+  .site-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  .site-header, .site-footer {
+    padding: 10px 0;
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================================
+   9. Dark Mode Support
+   ======================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #e0e0e0;
+    --secondary-color: #121212;
+    --accent-color: #80d8ff;
+    --header-bg: #1e1e1e;
+    --footer-bg: #1e1e1e;
+    --link-color: #80d8ff;
+    --link-hover-color: #4da6ff;
+  }
+
+  body {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+  }
+
+  .site-header, .site-footer {
+    background-color: var(--header-bg);
+  }
+
+  .gallery-item {
+    background-color: #1e1e1e;
+  }
+}
+
+/* ========================================================================
+   10. Enhanced Interactivity
+   ======================================================================== */
+/* Hover Overlay for Gallery Items */
+.gallery-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+  border-radius: var(--border-radius);
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
+}
+
+/* Lightbox Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: var(--border-radius);
+  animation: fadeIn 0.5s ease-in-out both;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color var(--transition-speed) ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--accent-color);
+}
+
+/* ========================================================================
+   11. Utility Classes for Animations and Visibility
+   ======================================================================== */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ========================================================================
