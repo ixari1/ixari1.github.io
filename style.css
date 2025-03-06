@@ -93,6 +93,10 @@ a:focus {
 /* ========================================================================
    5. Gallery Layout and Styling
    ======================================================================== */
+/* 
+   Set a fixed aspect ratio for gallery items (e.g., 4:3) to ensure uniformity.
+   The images inside use object-fit: cover to fill the container.
+*/
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -108,11 +112,13 @@ a:focus {
   background-color: #fff;
   box-shadow: 0 2px 8px var(--shadow-color);
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  aspect-ratio: 4 / 3;
 }
 
 .gallery-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
   border-radius: var(--border-radius);
   transition: transform var(--transition-speed) ease;
@@ -256,8 +262,21 @@ a:focus {
   max-height: 90%;
   border-radius: var(--border-radius);
   animation: fadeIn 0.5s ease-in-out both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Modal Image */
+.modal-content img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Modal Close Button */
 .modal-close {
   position: absolute;
   top: 10px;
@@ -266,11 +285,38 @@ a:focus {
   font-size: 2rem;
   cursor: pointer;
   transition: color var(--transition-speed) ease;
+  z-index: 10;
 }
 
 .modal-close:hover,
 .modal-close:focus {
   color: var(--accent-color);
+}
+
+/* Modal Action Buttons Container */
+.modal-actions {
+  margin-top: 15px;
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Modal Action Buttons */
+.modal-action {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.modal-action:hover,
+.modal-action:focus {
+  background-color: var(--link-hover-color);
 }
 
 /* ========================================================================
@@ -284,4 +330,4 @@ a:focus {
   display: none !important;
 }
 
-/* ========================================================================
+/* ======================================================================== End of style.css */
