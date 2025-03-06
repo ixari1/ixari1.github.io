@@ -4,23 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kida Gallery</title>
-    <meta name="description" content="A curated gallery of Kida/Gwida (learn more at https://catpedia.wiki/Kida)." />
+    <meta name="description" content="A curated gallery of Kida/Gwida. Discover stunning images and learn more at https://catpedia.wiki/Kida." />
+    <link rel="canonical" href="https://yourdomain.com/" />
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Kida Gallery" />
+    <meta property="og:description" content="A curated gallery of Kida/Gwida. Discover stunning images and learn more at https://catpedia.wiki/Kida." />
+    <meta property="og:url" content="https://yourdomain.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://yourdomain.com/path/to/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kida Gallery" />
+    <meta name="twitter:description" content="A curated gallery of Kida/Gwida. Discover stunning images and learn more at https://catpedia.wiki/Kida." />
+    <meta name="twitter:image" content="https://yourdomain.com/path/to/twitter-image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="site-header">
-      <h1>Kida Gallery</h1>
+      <div class="container">
+        <h1>Kida Gallery</h1>
+      </div>
     </header>
     <main class="site-main">
       <!-- Message for users with JavaScript disabled -->
       <noscript>
-        <p>Please enable JavaScript to experience full Kida gallery.</p>
+        <div class="noscript-message">
+          <p>Please enable JavaScript to experience the full Kida gallery.</p>
+        </div>
       </noscript>
       <!-- The gallery container where photos will be dynamically loaded -->
       <div id="gallery" class="gallery" aria-live="polite"></div>
     </main>
     <footer class="site-footer">
-      <p>&copy; 2025 Kida and Co. All rights reserved.</p>
+      <div class="container">
+        <p>&copy; 2025 Kida and Co. All rights reserved.</p>
+      </div>
     </footer>
     <script src="script.js"></script>
   </body>
