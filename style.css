@@ -269,9 +269,10 @@ a:focus {
 
 /* Modal Image */
 .modal-content img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
   display: block;
   margin: 0 auto;
 }
